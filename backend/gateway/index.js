@@ -32,7 +32,7 @@ app.use("/api/project", protect, proxyWithHeaders(process.env.PROJECT_SERVICE))
 app.get("/api/me", protect, getCurrentUser)
 app.get("/", (req, res) => {
     res.json({
-        "message": "Hello from Gateway"
+        "message": "Hello from Gateway."
     })
 })
 
