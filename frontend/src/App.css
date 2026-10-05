@@ -1,6 +1,6 @@
 .button{
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: linear-gradient(to right, #e13318, #cd25eb);
     color: white;
     border: none;
     border-radius: 5px;
