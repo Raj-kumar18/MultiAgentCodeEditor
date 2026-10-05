@@ -105,7 +105,7 @@ const Dashboard = () => {
           font-bold
           text-slate-900
           dark:text-white
-          ">Welcome to CodeAI</h2>
+          ">Welcome to CodeAI....</h2>
   
           <p className="
           mb-6 
