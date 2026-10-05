@@ -7,3 +7,7 @@
     cursor: pointer;
     
 }
+
+.button:hover{
+    background-color: linear-gradient(to right, #cd25eb, #e13318);
+}
