@@ -96,7 +96,7 @@ const Dashboard = () => {
           font-bold
           text-slate-900
           ">
-                          AI
+                          AI -
                       </span>
                   </div>
                   <h2 className="
