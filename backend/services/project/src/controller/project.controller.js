@@ -22,6 +22,8 @@ export const createProject = async (req, res) => {
             name,
             description
         })
+        const key = `projects-${userId}`
+        await redis.del(key)
         return res.status(201).json({
             success: true,
             message: "Project created successfully",
@@ -57,7 +59,7 @@ export const getProjects = async (req,res)=>{
             })
         }
         const projects = await Project.find({owner: userId}).sort({updatedAt: -1})
-        await redis.set(key, JSON.stringify(projects), "EX", 60 * 60)
+        await redis.set(key, JSON.stringify(projects), "EX", 60 * 60 * 24*7)
 
         return res.status(200).json({
             success: true,
@@ -119,7 +121,18 @@ export const getStarredProjects = async (req,res)=>{
             })
         }
 
+         const key = `starred-projects-${userId}`
+        let result = await redis.get(key)
+        if(result){
+            const projects = JSON.parse(result)
+            return res.status(200).json({
+                success: true,
+                message: "Projects fetched successfully",
+                projects
+            })
+        }
         const projects = await Project.find({owner: userId, starred: true}).sort({updatedAt: -1})
+        await redis.set(key, JSON.stringify(projects), "EX", 60 * 60 * 24*7)
         return res.status(200).json({
             success: true,
             message: "Starred projects fetched successfully",
@@ -160,6 +173,7 @@ export const toggleStarProject = async (req,res)=>{
         }
         project.starred =! project.starred
         await project.save()
+        await redis.del(`starred-projects-${userId}`)
         return res.status(200).json(
              {success: true,
             message: "Starred Toggle  successfully",
@@ -194,6 +208,7 @@ export const deleteProject = async (req,res)=>{
                 message: "Project not found",
             })
         }
+        await redis.del(`projects-${userId}`)
         return res.status(200).json({
             success: true,
             message: "Project deleted successfully",
