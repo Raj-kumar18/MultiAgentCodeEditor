@@ -21,7 +21,6 @@ export const getProjects = async () => {
     return null;
   }
 };
-
 export const getProjectById = async (id) => {
   try {
     const { data } = await api.get(`/api/projects/${id}`);
@@ -52,6 +51,7 @@ export const toggleStarProject = async (id) => {
   }
 };
 
+
 export const deleteProject = async (id) => {
   try {
     const { data } = await api.delete(`/api/projects/${id}`);
@@ -60,4 +60,4 @@ export const deleteProject = async (id) => {
     console.log(error);
     return null;
   }
-};
+}
