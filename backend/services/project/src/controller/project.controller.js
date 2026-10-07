@@ -189,8 +189,6 @@ export const toggleStarProject = async (req,res)=>{
     }
 }
 
-
-
 export const deleteProject = async (req,res)=>{
     try{
         const userId = req.headers["x-user-id"]
