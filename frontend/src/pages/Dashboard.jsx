@@ -5,6 +5,7 @@ import { login } from '../features/login'
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setUserData } from "../redux/userSlice"
+import Navbar from "../components/Navbar"
 const Dashboard = () => {
 
     const [loading,setLoading] = useState(false)
@@ -173,7 +174,7 @@ rounded-full bg-white/[0.3] blur-[130px] dark:block"/>
 
 
 <div className="relative flex min-h-0 flex-1 flex-col">
-  
+  <Navbar />
 </div>
 
 

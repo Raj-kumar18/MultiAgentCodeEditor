@@ -52,12 +52,12 @@ export const toggleStarProject = async (id) => {
 };
 
 
-export const deleteProject = async (id) => {
-  try {
-    const { data } = await api.delete(`/api/projects/${id}`);
-    return data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+export const deleteProject = async(id)=>{
+    try{
+        const {data} =await api.delete(`/api/projects/${id}`)
+        return data
+    }catch(error){
+        console.log(error)
+        return null
+    }
 }
